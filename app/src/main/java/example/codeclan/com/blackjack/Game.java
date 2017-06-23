@@ -20,6 +20,7 @@ public class Game {
         deck.populateDeck();
     }
 
+
     public int playGame() {
         player.startHand(deck);
         dealer.startHand(deck);
@@ -34,6 +35,7 @@ public class Game {
         while (player.getHandValue() < 21 && choice == 1) {
             getPlayerChoice();
             if (player.getHandValue() == 21) {
+                System.out.println("Your total is: " + player.getHandValue());
                 return 1;
             }
         }
@@ -55,6 +57,7 @@ public class Game {
                 System.out.println("Dealer total is: " + dealer.getHandValue());
             }
             if (dealer.getHandValue() == 21) {
+                System.out.println("Dealer total is: " + dealer.getHandValue());
                 return -1;
             }
             if (dealer.getHandValue() > 21) {
