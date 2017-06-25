@@ -20,15 +20,23 @@ public class Game {
         deck.populateDeck();
     }
 
-
     public int playGame() {
+        int winner;
         player.startHand(deck);
         dealer.startHand(deck);
         System.out.println("You have drawn:");
         player.showHand();
         System.out.println("Dealer has drawn:");
         System.out.println(dealer.showOneCard());
-//        -------------------
+        winner = Playerlogic();
+        if (winner == 2){
+            winner = DealerLogic();
+        }
+        return winner;
+
+    }
+
+    public int Playerlogic(){
         if (player.getHandValue() == 21) {
             return 1;
         }
@@ -43,7 +51,10 @@ public class Game {
         if (player.getHandValue() > 21){
             return -1;
         }
-//        --------------------
+        return 2;
+    }
+
+    public int DealerLogic(){
         System.out.println("Dealer has:");
         dealer.showHand();
         if (dealer.getHandValue() == 21) {
@@ -75,8 +86,6 @@ public class Game {
         return -1;
     }
 
-
-
     public void getPlayerChoice(){
        Choice playerChoice  = player.getChoice();
         switch (playerChoice){
@@ -90,8 +99,6 @@ public class Game {
         }
     }
 
-
-
     public void displayWinner(int result){
         switch(result){
             case 1 :
@@ -103,4 +110,5 @@ public class Game {
         }
 
     }
+
 }
